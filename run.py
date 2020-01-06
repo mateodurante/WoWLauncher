@@ -1,5 +1,7 @@
 import sys
 import pyperclip
+import os
+import keyboard
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton,
                              QToolTip, QMessageBox, QLabel)
@@ -59,11 +61,17 @@ class Window(QMainWindow):
         self.hide()
 
     def pressStart(self):
-        f = open('realmlist.txt','r+')
-        f.write(str("Set realmlist realm123"))
-        f.close()
-        os.system(wow.exe)
-
+        ruta="Data/{}/realmlist.wtf"
+        if os.path.exists(ruta.format("enUS")): 
+          with open('Data/enUS/realmlist.wtf','w') as f:
+            f.write(str("Set realmlist "))
+        if os.path.exists(ruta.format("enGB")):
+          with open('Data/enGB/realmlist.wtf','w') as f:
+            f.write(str("Set realmlist realm123"))      
+        os.system("wow.exe")
+        keyboard.write('barbui')
+        
+         
 
 
 stylesheet = """
