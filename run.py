@@ -39,6 +39,7 @@ class Window(QMainWindow):
         self.buttonCopy.clicked.connect(self.pressCopy)
         self.buttonConfig.clicked.connect(
             self.pressWindow2)
+        self.buttonStart.clicked.connect(self.pressStart)
 
         self.main_window()
 
@@ -57,12 +58,19 @@ class Window(QMainWindow):
         self.w.show()
         self.hide()
 
+    def pressStart(self):
+        f = open('realmlist.txt','r+')
+        f.write(str("Set realmlist realm123"))
+        f.close()
+        os.system(wow.exe)
+
+
 
 stylesheet = """
     QToolTip {
         border: 1px solid #76797C;
         background-color: rgb(90, 102, 117);
-        color: white;
+        color: red;
         padding: 5px;
         opacity: 200;
     }
