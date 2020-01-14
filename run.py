@@ -1,7 +1,11 @@
 import sys
+import time
 import pyperclip
 import os
 import keyboard
+import subprocess
+import win32api
+import win32com.client
 from PyQt5 import QtGui
 from PyQt5.QtWidgets import (QApplication, QMainWindow, QPushButton,
                              QToolTip, QMessageBox, QLabel)
@@ -64,15 +68,18 @@ class Window(QMainWindow):
         ruta="Data/{}/realmlist.wtf"
         if os.path.exists(ruta.format("enUS")): 
           with open('Data/enUS/realmlist.wtf','w') as f:
-            f.write(str("Set realmlist "))
+            f.write(str("Set realmlist logon.warmane.com "))
         if os.path.exists(ruta.format("enGB")):
           with open('Data/enGB/realmlist.wtf','w') as f:
             f.write(str("Set realmlist realm123"))      
-        os.system("wow.exe")
-        keyboard.write('barbui')
-        
-         
-
+        program = 'wow.exe'
+        subprocess.Popen(program)
+        shell = win32com.client.Dispatch("WScript.Shell") 
+        win32api.Sleep(5000) 
+        shell.SendKeys("bar") 
+        shell.SendKeys("{TAB}") 
+        shell.SendKeys("hola123") 
+        shell.SendKeys("{ENTER}")
 
 stylesheet = """
     QToolTip {
